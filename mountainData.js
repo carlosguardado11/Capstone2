@@ -532,7 +532,7 @@ const mountainsArray = [
 const mountainDropdownEl = document.getElementById('mountainDropdown');
 mountainDropdownEl.onchange = onMountainDropdownChange;
 
-const tbody = document.querySelector('mountainTbl tbody');
+const tbody = document.querySelector('#mountainTbl tbody');
 
 const displayPictureDiv = document.getElementById('images');
 
@@ -556,21 +556,20 @@ function onMountainDropdownChange() {
         tbody.removeChild(mtn);
     });
 
-    selectedMountains.forEach((park) => {
-        displayPicture(park);
-        locationSelected(tbody, park);
+    selectedMountains.forEach((mtn) => {
+        locationSelected(tbody, mtn);
     });
 }
 
-function locationSelected(myTable, mountain) {
-    const row = myTable.insertRow(-1);
+function locationSelected(mountainTbl, mountain) {
+    const row = mountainTbl.insertRow(-1);
 
     const cell1 = row.insertCell(0);
-    cell1.innerHTML = mountainName.name;
+    cell1.innerHTML = mountain.name;
 
     const cell2 = row.insertCell(1);
-    cell2.innerHTML = mountainName.desc;
+    cell2.innerHTML = mountain.desc;
 
     const cell3 = row.insertCell(2);
-    cell3.innerHTML = mountainName.elevation;
+    cell3.innerHTML = mountain.elevation;
 }

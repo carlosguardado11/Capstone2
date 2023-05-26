@@ -6858,3 +6858,74 @@ const nationalParksArray = [
     }
     }
 ]
+
+const locationDropdownEl = document.getElementById('locationDropdown')
+locationDropdownEl.onChange = onLocationChange;
+
+parkTypeEl.onChange = onTypeChange;
+
+const tbody = document.querySelector('#stateParkInfo tbody');
+
+function onLocationChange() {
+    const selectedState = locationDropdownEl.value;
+
+    Array.from(parkTypeEl).forEach((option) => {
+        if (parkTypeEl) {
+            parkTypeEl.value = 'select';
+        }
+    });
+
+    const selectedStates = nationalParksArray.filter(
+        (state) => state.State === selectedState
+    ); 
+
+    const tableRows = document.querySelectorAll('#tableRow tr');
+
+    Array.from(tableRows).forEach((state) => {
+        tbody.removeChild(state);
+    });
+}
+
+function onTypeChange() {
+    const selectedType = parkTypeEl.value;
+
+    Array.from(locationDropdownEl).forEach((option) => {
+        if (selectedType) {
+            locationDropdownEl.value = 'select';
+        }
+    });
+
+    const selectedTypes = nationalParksArray.filter((park) =>
+    park.LocationName.includes(selectedType)
+    );
+
+    const tableRows = document.querySelectorAll('#tableRow tr');
+
+    Array.from(tableRows).forEach((park) => {
+        tbody.removeChild(park);
+    });
+    selectedTypes.forEach((park) => {
+        locationSelected(tbody, park);
+    });
+}
+
+function locationSelected(myTable, park) {
+
+const row = myTable.insertRow(-1);
+
+const cell1 = row.insertCell(0);
+cell1.innerHTML = banana.LocationName
+
+const cell2 = row.insertCell(1);
+cell2.innerHTML = `${park.Address} ${park.City}, ${park.State}`
+
+const cell3 = row.insertCell(2);
+cell3.innerHTML = park.Phone;
+
+const cell4 = row.insertCell(3);
+cell4.innerHTML = park.Fax;
+
+const cell5 = row.insertCell(4);
+cell5.innerHTML = park.Location.coordinates;
+
+}

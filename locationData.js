@@ -55,3 +55,11 @@ const locationsArray = [
     "Wisconsin",
     "Wyoming"
 ];
+
+const locationDropdownEl = document.getElementById('locationDropdown');
+
+locationsArray.forEach((state) => {
+    const optionEl = new Option(state,state);
+
+    locationDropdownEl.appendChild(optionEl);
+});

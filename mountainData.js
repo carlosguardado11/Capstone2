@@ -528,3 +528,55 @@ const mountainsArray = [
         }
     }
 ]
+
+const mountainDropdownEl = document.getElementById('mountainDropdown');
+mountainDropdownEl.onchange = onMountainDropdownChange;
+
+const tbody = document.querySelector('mountainTbl tbody');
+
+const displayPictureDiv = document.getElementById('images');
+
+for (let i = 0; i < mountainsArray.length; i++) {
+    const mountainName = new Option(
+        mountainsArray[i].name,
+        mountainsArray[i].name
+    );
+    mountainDropdownEl.appendChild(mountainName);
+}
+
+function onMountainDropdownChange() {
+    const selectedMountain = mountainDropdownEl.value;
+
+    const selectedMountains = mountainsArray.filter(
+        (mtn) => mtn.name === selectedMountain
+    );
+
+    const tableRows = document.querySelectorAll('#tableRow tr');
+    Array.from(tableRows).forEach((mtn) => {
+        tbody.removeChild(mtn);
+    });
+
+    selectedMountains.forEach((park) => {
+        displayPicture(park);
+        locationSelected(tbody, park);
+    });
+}
+
+function locationSelected(myTable, mountain) {
+    const row = myTable.insertRow(-1);
+
+    const cell1 = row.insertCell(0);
+    cell1.innerHTML = mountainsArray.name;
+
+    const cell2 = row.insertCell(1);
+    cell2.innerHTML = mountainsArray.desc;
+
+    const cell3 = row.insertCell(2);
+    cell3.innerHTML = mountainsArray.elevation;
+}
+
+function displayPicture(park) {
+    let imgEl = document.querySelector('#imgOutput img');
+
+
+}

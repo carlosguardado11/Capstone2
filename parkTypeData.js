@@ -12,4 +12,10 @@ const parkTypesArray = [
     "Seashore",
     "Trail",
     "Parkway"
-]
+];
+const parkTypeEl = document.getElementById('parkType');
+
+parkTypesArray.forEach((type) => {
+    const optionEl = new Option (type,type);
+    parkTypeEl.appendChild(optionEl);
+});

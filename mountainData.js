@@ -574,9 +574,3 @@ function locationSelected(myTable, mountain) {
     const cell3 = row.insertCell(2);
     cell3.innerHTML = mountainsArray.elevation;
 }
-
-function displayPicture(park) {
-    let imgEl = document.querySelector('#imgOutput img');
-
-
-}

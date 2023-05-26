@@ -566,11 +566,11 @@ function locationSelected(myTable, mountain) {
     const row = myTable.insertRow(-1);
 
     const cell1 = row.insertCell(0);
-    cell1.innerHTML = mountainsArray.name;
+    cell1.innerHTML = mountainName.name;
 
     const cell2 = row.insertCell(1);
-    cell2.innerHTML = mountainsArray.desc;
+    cell2.innerHTML = mountainName.desc;
 
     const cell3 = row.insertCell(2);
-    cell3.innerHTML = mountainsArray.elevation;
+    cell3.innerHTML = mountainName.elevation;
 }
